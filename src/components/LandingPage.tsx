@@ -1,9 +1,8 @@
 import { TaskBar } from '@react95/core'
-import { Folder } from '@react95/icons'
-import styled from '@xstyled/styled-components'
 import { useCallback } from 'react'
 import { createUseStyles } from 'react-jss'
 import { useOpenWindow } from './WindowsManager/hooks'
+import YearFolder from './YearFolder'
 
 const useStyles = createUseStyles({
   container: {
@@ -16,30 +15,6 @@ const useStyles = createUseStyles({
     userSelect: 'none',
   },
 })
-
-const Icon = styled.div({
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'flex-start',
-  alignItems: 'center',
-  gap: '0.25em',
-  cursor: 'pointer',
-})
-
-const YearFolder = ({
-  year,
-  onClick,
-}: {
-  year: number
-  onClick: () => void
-}) => {
-  return (
-    <Icon onClick={onClick}>
-      <Folder />
-      <label>{year}</label>
-    </Icon>
-  )
-}
 
 const Desktop = () => {
   const classes = useStyles()

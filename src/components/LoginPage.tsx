@@ -3,7 +3,7 @@ import { Mprserv120 } from '@react95/icons'
 import { Formik } from 'formik'
 import { useGoogleLogin } from 'react-google-login'
 import { createUseStyles } from 'react-jss'
-import Window from './Window'
+import WindowFrame from './WindowFrame'
 
 const useStyles = createUseStyles({
   container: {
@@ -75,7 +75,7 @@ export default function LoginWindow() {
             onSubmit={handleSubmit}
             onReset={handleReset}
           >
-            <Window title="Welcome to Celtiberian Workday Register">
+            <WindowFrame title="Welcome to Celtiberian Workday Register">
               <Mprserv120 />
               <div className={classes.formContainer}>
                 <p>Type a email to log on to system by using Google.</p>
@@ -109,7 +109,7 @@ export default function LoginWindow() {
                   Cancel
                 </Button>
               </div>
-            </Window>
+            </WindowFrame>
           </form>
         )}
       </Formik>

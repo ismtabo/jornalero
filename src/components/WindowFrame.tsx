@@ -1,5 +1,11 @@
 import { Frame, TitleBar } from '@react95/core'
-import { forwardRef, HTMLAttributes, ReactNode } from 'react'
+import {
+  forwardRef,
+  HTMLAttributes,
+  MouseEventHandler,
+  ReactNode,
+  useCallback,
+} from 'react'
 import { createUseStyles } from 'react-jss'
 
 const useStyles = createUseStyles({
@@ -23,12 +29,19 @@ export default forwardRef<
   }
 >(({ title, children, onClose, active = true, ...rest }, ref) => {
   const classes = useStyles()
+  const handleClose: MouseEventHandler<HTMLButtonElement> = useCallback(
+    (e) => {
+      e.stopPropagation()
+      onClose?.()
+    },
+    [onClose]
+  )
   return (
     <Frame ref={ref} draggable padding="0.2em" {...rest}>
       <TitleBar title={title} active={active}>
         <TitleBar.OptionsBox>
           <TitleBar.Option>?</TitleBar.Option>
-          <TitleBar.Option onClick={() => onClose?.()}>X</TitleBar.Option>
+          <TitleBar.Option onClick={handleClose}>X</TitleBar.Option>
         </TitleBar.OptionsBox>
       </TitleBar>
       <div className={classes.content}>{children}</div>

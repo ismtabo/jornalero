@@ -1,6 +1,6 @@
 import { ReactNode, useCallback, useRef } from 'react'
 import Draggable from 'react-draggable'
-import BaseWindow from '../Window'
+import WindowFrame from '../WindowFrame'
 
 export default function Window({
   title,
@@ -14,7 +14,7 @@ export default function Window({
   onCloseWindow,
   onFocusWindow,
   ...rest
-}: Omit<Parameters<typeof BaseWindow>[0], 'children'> & {
+}: Omit<Parameters<typeof WindowFrame>[0], 'children'> & {
   uuid: string
   x: number
   y: number
@@ -34,7 +34,7 @@ export default function Window({
   }, [onFocusWindow, uuid, active])
   return (
     <Draggable nodeRef={nodeRef} defaultPosition={{ x, y }}>
-      <BaseWindow
+      <WindowFrame
         ref={nodeRef}
         {...rest}
         style={{
@@ -50,7 +50,7 @@ export default function Window({
         onClick={handleFocusWindow}
       >
         {content}
-      </BaseWindow>
+      </WindowFrame>
     </Draggable>
   )
 }

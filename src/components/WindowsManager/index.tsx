@@ -56,9 +56,9 @@ export default function WindowsManager({ children }: { children: ReactNode }) {
     >
       {children}
       <div className={classes.container}>
-        {state.windows.map((window, i, windows) => (
+        {state.map((window) => (
           <Window
-            key={i}
+            key={window.uuid}
             {...window}
             onCloseWindow={handleCloseWindow}
             onFocusWindow={handleFocusWindow}
